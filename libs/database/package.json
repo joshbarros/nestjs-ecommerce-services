@@ -1,0 +1,17 @@
+{
+  "name": "@app/database",
+  "version": "0.1.0",
+  "description": "Shared database configuration and utilities",
+  "main": "src/index.ts",
+  "dependencies": {
+    "@nestjs/common": "^10.3.0",
+    "@nestjs/config": "^3.1.1",
+    "@nestjs/typeorm": "^10.0.1",
+    "typeorm": "^0.3.19",
+    "pg": "^8.11.3",
+    "reflect-metadata": "^0.1.14"
+  },
+  "devDependencies": {
+    "@types/pg": "^8.10.9"
+  }
+}
