@@ -1,0 +1,117 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+  external_labels:
+    cluster: 'ecommerce-dev'
+    environment: 'development'
+
+# Alertmanager configuration
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets: []
+
+# Rule files
+rule_files: []
+
+# Scrape configurations
+scrape_configs:
+  # Prometheus self-monitoring
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  # API Gateway
+  - job_name: 'api-gateway'
+    metrics_path: '/metrics'
+    static_configs:
+      - targets: ['api-gateway:3000']
+        labels:
+          service: 'api-gateway'
+
+  # Auth Service
+  - job_name: 'auth-service'
+    metrics_path: '/metrics'
+    static_configs:
+      - targets: ['auth-service:3001']
+        labels:
+          service: 'auth-service'
+
+  # User Service
+  - job_name: 'user-service'
+    metrics_path: '/metrics'
+    static_configs:
+      - targets: ['user-service:3002']
+        labels:
+          service: 'user-service'
+
+  # Catalog Service
+  - job_name: 'catalog-service'
+    metrics_path: '/metrics'
+    static_configs:
+      - targets: ['catalog-service:3003']
+        labels:
+          service: 'catalog-service'
+
+  # Cart Service
+  - job_name: 'cart-service'
+    metrics_path: '/metrics'
+    static_configs:
+      - targets: ['cart-service:3004']
+        labels:
+          service: 'cart-service'
+
+  # Order Service
+  - job_name: 'order-service'
+    metrics_path: '/metrics'
+    static_configs:
+      - targets: ['order-service:3005']
+        labels:
+          service: 'order-service'
+
+  # Payment Service
+  - job_name: 'payment-service'
+    metrics_path: '/metrics'
+    static_configs:
+      - targets: ['payment-service:3006']
+        labels:
+          service: 'payment-service'
+
+  # Inventory Service
+  - job_name: 'inventory-service'
+    metrics_path: '/metrics'
+    static_configs:
+      - targets: ['inventory-service:3007']
+        labels:
+          service: 'inventory-service'
+
+  # Shipping Service
+  - job_name: 'shipping-service'
+    metrics_path: '/metrics'
+    static_configs:
+      - targets: ['shipping-service:3008']
+        labels:
+          service: 'shipping-service'
+
+  # Notification Service
+  - job_name: 'notification-service'
+    metrics_path: '/metrics'
+    static_configs:
+      - targets: ['notification-service:3009']
+        labels:
+          service: 'notification-service'
+
+  # Infrastructure monitoring
+  - job_name: 'postgres'
+    static_configs:
+      - targets: []  # Add postgres_exporter when available
+
+  - job_name: 'redis'
+    static_configs:
+      - targets: []  # Add redis_exporter when available
+
+  - job_name: 'rabbitmq'
+    static_configs:
+      - targets: ['rabbitmq:15692']
+        labels:
+          service: 'rabbitmq'
